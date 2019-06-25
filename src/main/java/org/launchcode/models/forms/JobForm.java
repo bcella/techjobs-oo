@@ -22,17 +22,38 @@ public class JobForm {
     @NotNull
     private int employerId;
 
+    @NotNull
+    private int locationId;
+
+    @NotNull
+    private int coreCompetencyId;
+
+    @NotNull
+    private int positionTypeId;
+
+
     /*
         TODO #3 - Included other fields needed to create a job,
         with correct validation attributes and display names.
         Don't forget to add getters and setters
      */
-
+    @NotNull
+    @Size(min=1, message = "Employer may not be empty")
     private ArrayList<Employer> employers;
+
+    @NotNull
+    @Size(min=1, message = "Location may not be empty")
     private ArrayList<Location> locations;
+
+    @NotNull
+    @Size(min=1, message = "Skill may not be empty")
     private ArrayList<CoreCompetency> coreCompetencies;
+
+    @NotNull
+    @Size(min=1, message = "Position type may not be empty")
     private ArrayList<PositionType> positionTypes;
 
+    //JobForm Constructor - note added by me
     public JobForm() {
 
         JobData jobData = JobData.getInstance();
@@ -42,7 +63,39 @@ public class JobForm {
         */
 
         employers = jobData.getEmployers().findAll();
+        // initialize other lists - note added by me
+        locations = jobData.getLocations().findAll();
+        coreCompetencies = jobData.getCoreCompetencies().findAll();
+        positionTypes = jobData.getPositionTypes().findAll();
 
+
+    }
+
+    // Getters and Setters:
+
+
+    public int getLocationId() {
+        return locationId;
+    }
+
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
+    }
+
+    public int getCoreCompetencyId() {
+        return coreCompetencyId;
+    }
+
+    public void setCoreCompetencyId(int coreCompetencyId) {
+        this.coreCompetencyId = coreCompetencyId;
+    }
+
+    public int getPositionTypeId() {
+        return positionTypeId;
+    }
+
+    public void setPositionTypeId(int positionTypeId) {
+        this.positionTypeId = positionTypeId;
     }
 
     public String getName() {

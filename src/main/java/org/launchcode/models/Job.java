@@ -18,7 +18,7 @@ public class Job {
         id = nextId;
         nextId++;
     }
-
+    // Constructor: - note added by me
     public Job(String aName, Employer aEmployer, Location aLocation,
                PositionType aPositionType, CoreCompetency aSkill) {
 
